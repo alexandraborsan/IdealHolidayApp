@@ -15,6 +15,11 @@
             Title="About"
             ContentTemplate="{DataTemplate local:AboutPage}"
         />
-    </TabBar>
+        <ShellContent
+            Title="My Holiday Plans"
+            ContentTemplate="{DataTemplate local:PlanEntryPage}"
+        />
+    </TabBar>
+
 
 </Shell>
