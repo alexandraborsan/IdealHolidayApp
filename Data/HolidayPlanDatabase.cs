@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IdealHolidayApp.Models;
-
+using System.Collections;
 
 namespace IdealHolidayApp.Data
 {
@@ -16,6 +16,8 @@ namespace IdealHolidayApp.Data
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<HolidayPlan>().Wait();
+            _database.CreateTableAsync<Offer>().Wait();
+            _database.CreateTableAsync<PlanOffer>().Wait();
         }
         public Task<List<HolidayPlan>> GetHolidayPlanAsync()
         {
@@ -42,6 +44,52 @@ namespace IdealHolidayApp.Data
         {
             return _database.DeleteAsync(slist);
         }
+        public Task<int> SaveOfferAsync(Offer offer)
+        {
+            if (offer.Id != 0)
+            {
+                return _database.UpdateAsync(offer);
+            }
+            else
+            {
+                return _database.InsertAsync(offer);
+            }
+        }
+        public Task<int> DeleteOfferAsync(Offer offer)
+        {
+            return _database.DeleteAsync(offer);
+        }
+        public Task<List<Offer>> GetProductsAsync()
+        {
+            return _database.Table<Offer>().ToListAsync();
+        }
+        public Task<int> SavePlanOfferAsync(PlanOffer listp)
+        {
+            if (listp.Id != 0)
+            {
+                return _database.UpdateAsync(listp);
+            }
+            else
+            {
+                return _database.InsertAsync(listp);
+            }
+        }
+        public Task<List<Offer>> GetPlanOffersAsync(int shoplistid)
+        {
+            return _database.QueryAsync<Offer>(
+            "select P.ID, P.Description from Offer P"
+            + " inner join PlanOffer LP"
+            + " on P.ID = LP.OfferId where LP.PlanOfferId = ?",
+            shoplistid);
+        }
 
+        internal Task<IEnumerable> GetOffersAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }
+
+    
+
