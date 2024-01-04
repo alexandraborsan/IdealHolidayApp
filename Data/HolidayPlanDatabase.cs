@@ -105,7 +105,10 @@ namespace IdealHolidayApp.Data
                 return _database.InsertAsync(hotel);
             }
         }
-
+        public Task DeleteHotelAsync(Hotel hotel)
+        {
+            return _database.DeleteAsync(hotel);
+        }
 
 
 

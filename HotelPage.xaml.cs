@@ -29,6 +29,11 @@ public partial class HotelPage : ContentPage
         var myLocation = new Location(46.7731796289, 23.6213886738);
         await Map.OpenAsync(location, options);
     }
-
+    async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var hotel = (Hotel)BindingContext;
+        await App.Database.DeleteHotelAsync(hotel);
+        await Navigation.PopAsync();
+    }
 
 }
