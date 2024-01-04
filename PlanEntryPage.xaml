@@ -4,16 +4,19 @@
              x:Class="IdealHolidayApp.PlanEntryPage"
              Title="🗓️Holiday Entry Page">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Holiday Plan"
- Clicked="OnHolidayPlanAddedClicked" />
+        <ToolbarItem Text="Add Holiday Plan" Clicked="OnHolidayPlanAddedClicked" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView"
- Margin="20"
- ItemSelected="OnPlanViewItemSelected">
+    <ListView x:Name="listView" Margin="20" ItemSelected="OnPlanViewItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Description}"
- Detail="{Binding Date}" />
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding Description}" FontAttributes="Bold"/>
+                        <Label Text="{Binding BeginDate, StringFormat='Begin: {0:d}'}" />
+                        <Label Text="{Binding EndDate, StringFormat='End: {0:d}'}" />
+                        <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" />
+                    </StackLayout>
+                </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

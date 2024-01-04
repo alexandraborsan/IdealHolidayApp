@@ -25,13 +25,13 @@
 
             <Button
                 x:Name="CounterBtn"
-                Text="How to book"
+                Text="How to plan"
                 SemanticProperties.Hint="How many tickets can you buy?!"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="That's really how easy it is to book a trip!"
+                Text="That's really how easy it is to plan a trip!"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="12"

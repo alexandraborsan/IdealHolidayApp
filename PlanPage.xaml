@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:IdealHolidayApp"
              x:Class="IdealHolidayApp.PlanPage"
-             Title="Plan Page">
+             Title="✍Plan Page">
 
     <StackLayout Margin="20">
         <Editor Placeholder="Enter the description of the holiday plan"
@@ -14,14 +14,28 @@
             </Editor.Behaviors>
         </Editor>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <Label Text="Begin Date:" />
+        <DatePicker Date="{Binding BeginDate}" />
 
-            <Button Text="Save" Clicked="OnSaveButtonClicked" />
-            <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
-        </Grid>
+        <Label Text="End Date:" />
+        <DatePicker Date="{Binding EndDate}" />
+
+        <Label Text="Price:" />
+        <Entry Placeholder="Enter the price"
+               Keyboard="Numeric"
+            Text="{Binding Price}" />
+
+        <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Save" Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+            </Grid>
+
+            <Label Text="Additional Information" FontAttributes="Bold" />
+
     </StackLayout>
 </ContentPage>

@@ -18,6 +18,8 @@ namespace IdealHolidayApp.Data
             _database.CreateTableAsync<HolidayPlan>().Wait();
             _database.CreateTableAsync<Offer>().Wait();
             _database.CreateTableAsync<PlanOffer>().Wait();
+            _database.CreateTableAsync<Hotel>().Wait();
+
         }
         public Task<List<HolidayPlan>> GetHolidayPlanAsync()
         {
@@ -83,12 +85,31 @@ namespace IdealHolidayApp.Data
             shoplistid);
         }
 
-        internal Task<IEnumerable> GetOffersAsync()
+        public Task<List<Offer>> GetOffersAsync()
         {
-            throw new NotImplementedException();
+            return _database.Table<Offer>().ToListAsync();
         }
-    }
 
+        public Task<List<Hotel>> GetHotelsAsync()
+        {
+            return _database.Table<Hotel>().ToListAsync();
+        }
+        public Task<int> SaveHotelAsync(Hotel hotel)
+        {
+            if (hotel.Id != 0)
+            {
+                return _database.UpdateAsync(hotel);
+            }
+            else
+            {
+                return _database.InsertAsync(hotel);
+            }
+        }
+
+
+
+
+    }
 }
 
     

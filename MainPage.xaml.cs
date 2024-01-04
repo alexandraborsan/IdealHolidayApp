@@ -14,9 +14,9 @@
             count++;
 
             if (count == 1)
-                CounterBtn.Text = $"{count} Holiday you could've booked";
+                CounterBtn.Text = $"{count} Holiday you could've planned";
             else
-                CounterBtn.Text = $"{count} Holidays you could've booked";
+                CounterBtn.Text = $"{count} Holidays you could've planned";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
