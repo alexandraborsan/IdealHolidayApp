@@ -1,4 +1,6 @@
 using IdealHolidayApp.Models;
+using Plugin.LocalNotification;
+
 namespace IdealHolidayApp;
 
 public partial class PlanPage : ContentPage
@@ -32,4 +34,23 @@ public partial class PlanPage : ContentPage
 
         listView.ItemsSource = await App.Database.GetPlanOffersAsync(hotell.Id);
     }
-}
+    private void ScheduleNotification(HolidayPlan holidayPlan)
+    {
+        // Calculate the notification time (adjust as needed)
+        DateTime notifyTime = holidayPlan.BeginDate.AddDays(-2);
+
+        // Create a notification request
+        var request = new NotificationRequest
+        {
+            Title = "Reminder: Upcoming Holiday!",
+            Description = $"Don't forget your holiday starting on {holidayPlan.BeginDate.ToShortDateString()}",
+            Schedule = new NotificationRequestSchedule
+            {
+                NotifyTime = notifyTime
+            }
+        };
+
+        // Show the notification
+        LocalNotificationCenter.Current.Show(request);
+    }
+    }
