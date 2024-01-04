@@ -13,7 +13,7 @@
                 <local:ValidationBehaviour />
             </Editor.Behaviors>
         </Editor>
-
+    
         <Label Text="Begin Date:" />
         <DatePicker Date="{Binding BeginDate}" />
 
@@ -24,6 +24,16 @@
         <Entry Placeholder="Enter the price"
                Keyboard="Numeric"
             Text="{Binding Price}" />
+        <ListView x:Name="listView"
+         Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Description}" />
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Picker x:Name="HotelPicker" Title="Enter Hotel Name"/>
 
         <Grid>
                 <Grid.ColumnDefinitions>
@@ -34,8 +44,6 @@
                 <Button Text="Save" Clicked="OnSaveButtonClicked" />
                 <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
             </Grid>
-
-            <Label Text="Additional Information" FontAttributes="Bold" />
 
     </StackLayout>
 </ContentPage>
