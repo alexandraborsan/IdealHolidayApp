@@ -76,14 +76,16 @@ namespace IdealHolidayApp.Data
                 return _database.InsertAsync(listp);
             }
         }
-        public Task<List<Offer>> GetPlanOffersAsync(int holidayplanid)
+        public Task<List<Offer>> GetPlanOffersAsync(int holidayPlanId)
         {
             return _database.QueryAsync<Offer>(
-            "select P.ID, P.Description from Offer P"
-            + " inner join PlanOffer LP"
-            + " on P.ID = LP.OfferId where LP.PlanOfferId = ?",
-            holidayplanid);
+                "SELECT P.ID, P.Description FROM Offer P"
+                + " INNER JOIN PlanOffer LP"
+                + " ON P.ID = LP.OfferId WHERE LP.HolidayPlanId = ?",
+                holidayPlanId);
         }
+
+
 
         public Task<List<Offer>> GetOffersAsync()
         {

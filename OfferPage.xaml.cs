@@ -5,7 +5,6 @@ namespace IdealHolidayApp
     public partial class OfferPage : ContentPage
     {
         HolidayPlan sl;
-
         public OfferPage(HolidayPlan slist)
         {
             InitializeComponent();
@@ -42,7 +41,7 @@ namespace IdealHolidayApp
                 p = listView.SelectedItem as Offer;
                 var lp = new PlanOffer()
                 {
-                    PlanHolidayId = sl.Id,
+                    HolidayPlanId = sl.Id,
                     OfferId = p.Id
                 };
                 await App.Database.SavePlanOfferAsync(lp);

@@ -13,7 +13,7 @@ namespace IdealHolidayApp.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [ForeignKey(typeof(HolidayPlan))]
-        public int PlanHolidayId { get; set; }
+        public int HolidayPlanId { get; set; }
         public int OfferId { get; set; }
 
     }

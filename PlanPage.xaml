@@ -24,15 +24,6 @@
         <Entry Placeholder="Enter the price"
                Keyboard="Numeric"
             Text="{Binding Price}" />
-        <ListView x:Name="listView"
-         Margin="20">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Detail="{Binding Description}" />
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
         <Picker x:Name="HotelPicker" Title="Enter Hotel Name"/>
 
         <Grid>
@@ -43,7 +34,14 @@
 
                 <Button Text="Save" Clicked="OnSaveButtonClicked" />
                 <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
-            </Grid>
+            <ListView x:Name="listView" Margin="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding Description}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
 
     </StackLayout>
 </ContentPage>
